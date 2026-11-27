@@ -14,9 +14,7 @@ class WeatherData:
 @dataclass
 class WeatherNode:
     """Stores the position and weather data for a given Node."""
+    node_id: int
     longitude: float
     latitude: float
-    height: str
-    name: str = None
-    node_id: int
     weather_data: WeatherData
