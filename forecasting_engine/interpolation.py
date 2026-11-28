@@ -52,12 +52,6 @@ def calculate_square_distance(a: float, b: float)-> float:
     distance_y = (b[1] - a[1]) ** 2
     return distance_x + distance_y
 
-def search_node(node: KDNode) -> None:
-    """Pushes the closest """
-    if node is None:
-        return None
-    ...
-
 def query_nearest_points(tree: KDNode, target: tuple, k: int=1) -> list[tuple]:
     """Returns the k nearest points to a target from a KD-Tree.
     
@@ -78,6 +72,7 @@ def query_nearest_points(tree: KDNode, target: tuple, k: int=1) -> list[tuple]:
         distance = calculate_square_distance(target, node.point)
 
         # Store the k closest candidates in a max-heap
+        # We use the negation of the distance so the heap functions as intended
         entry = (-distance, -node.index)
 
         if len(heap) < k:
